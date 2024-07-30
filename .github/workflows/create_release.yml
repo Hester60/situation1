@@ -33,21 +33,18 @@ jobs:
           python -m pydoc -w main operations
           mv *.html documentation/
 
-      - name: Check out master branch
+      - name: Create and checkout a branch for changes
         run: |
-          git branch -a
-          git status
-          git checkout master
-          git pull origin master
-
-      - name: Update master branch with documentation
-        run: |
-          git config --global user.name 'Hester60'
-          git config --global user.email 'thomascarbuccia@hotmail.fr'
-          git checkout master
-          git pull origin master
+          git checkout -b temp-branch
           git add documentation/
           git commit -m "Update documentation"
+          git push origin temp-branch
+
+      - name: Merge changes to master and push
+        run: |
+          git checkout master
+          git pull origin master
+          git merge temp-branch
           git push origin master
 
       - name: Create release
