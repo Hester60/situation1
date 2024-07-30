@@ -51,7 +51,8 @@ jobs:
 
       - name: Merge changes to master and push
         run: |
-          git checkout master
+          git fetch origin
+          git checkout -b master
           git pull origin master
           git merge temp-branch
           git push origin master
