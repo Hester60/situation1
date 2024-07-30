@@ -33,6 +33,11 @@ jobs:
           python -m pydoc -w main operations
           mv *.html documentation/
 
+      - name: Set Git configuration
+        run: |
+          git config --global user.name 'Hester60'
+          git config --global user.email 'thomascarbuccia@hotmail.fr'
+
       - name: Create and checkout a branch for changes
         run: |
           git checkout -b temp-branch
