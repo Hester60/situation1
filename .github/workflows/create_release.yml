@@ -30,7 +30,7 @@ jobs:
       - name: Generate Documentation
         run: |
           mkdir -p documentation
-          pydoc -w main operations
+          python -m pydoc -w main operations
           mv *.html documentation/
       
       - name: Update master branch with documentation
