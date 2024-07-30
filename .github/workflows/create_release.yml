@@ -6,9 +6,13 @@ on:
       - '*'
 
 jobs:
-  build:
+  release:
     name: Check test
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: read
+      deployments: write
     strategy:
       matrix:
         python-version: [ "3.11" ]
