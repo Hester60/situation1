@@ -32,10 +32,17 @@ jobs:
           mkdir -p documentation
           python -m pydoc -w main operations
           mv *.html documentation/
-      
+
+      - name: Check out master branch
+        run: |
+          git branch -a
+          git status
+          git checkout master
+          git pull origin master
+
       - name: Update master branch with documentation
         run: |
-          git config --global user.name 'Hester'
+          git config --global user.name 'Hester60'
           git config --global user.email 'thomascarbuccia@hotmail.fr'
           git checkout master
           git pull origin master
