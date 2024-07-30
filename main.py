@@ -9,6 +9,7 @@ OPERATION_TYPE = MappingProxyType({
     3: 'division',
 })
 
+# Mapping of operation and associated function
 OPERATION_FUNCTIONS = {
     'addition': addition,
     'subtraction': subtraction,
@@ -18,6 +19,12 @@ OPERATION_FUNCTIONS = {
 
 
 def get_operation_choice():
+    """
+    Ask user to select an operation.
+
+    Returns:
+        Operation type (division, subtraction...).
+    """
     print("Select the type of the operation by pressing the number:")
 
     for code, name in OPERATION_TYPE.items():
@@ -36,6 +43,15 @@ def get_operation_choice():
 
 
 def ask_for_number(is_first_number=False):
+    """
+    Ask user to enter a number
+
+    Args:
+        is_first_number (bool): set "first" or "second" into the prompt.
+
+    Returns:
+        The selected number.
+    """
     number_name = 'first'
 
     if not is_first_number:
@@ -50,6 +66,9 @@ def ask_for_number(is_first_number=False):
 
 
 def init():
+    """
+    Start the calculator in an infinite loop.
+    """
     print("Welcome. Press CTRL+C to stop.\n")
 
     while True:
@@ -64,7 +83,8 @@ def init():
         print(f"The result is: {result}\n")
 
 
-try:
-    init()
-except KeyboardInterrupt:
-    print("\nProgram interrupted. Exiting...")
+if __name__ == '__main__':
+    try:
+        init()
+    except KeyboardInterrupt:
+        print("\nProgram interrupted. Exiting...")
