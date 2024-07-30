@@ -1,0 +1,51 @@
+name: Create release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Check test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.11" ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{matrix.python-version}}
+
+      - name: Check python version
+        run: python -c "import sys; print(sys.version)"
+
+      - name: Run tests
+        run: python tests.py
+
+      - name: Generate Documentation
+        run: |
+          mkdir -p documentation
+          pydoc -w main operations
+          mv *.html documentation/
+      
+      - name: Update master branch with documentation
+        run: |
+          git config --global user.name 'Hester'
+          git config --global user.email 'thomascarbuccia@hotmail.fr'
+          git checkout master
+          git pull origin master
+          git add documentation/
+          git commit -m "Update documentation"
+          git push origin master
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: documentation/*.html
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
