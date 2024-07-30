@@ -31,30 +31,27 @@ jobs:
       - name: Run tests
         run: python tests.py
 
-      - name: Generate Documentation
-        run: |
-          mkdir -p documentation
-          python -m pydoc -w main operations
-          mv *.html documentation/
-
       - name: Set Git configuration
         run: |
           git config --global user.name 'Hester60'
           git config --global user.email 'thomascarbuccia@hotmail.fr'
-
-      - name: Create and checkout a branch for changes
-        run: |
-          git checkout -b temp-branch
-          git add documentation/
-          git commit -m "Update documentation"
-          git push origin temp-branch
 
       - name: Merge changes to master and push
         run: |
           git fetch origin
           git checkout -b master
           git pull origin master
-          git merge temp-branch
+
+      - name: Generate Documentation
+        run: |
+          mkdir -p documentation
+          python -m pydoc -w main operations
+          mv *.html documentation/   
+
+      - name: Add documentation and commit
+        run: |
+          git add .
+          git commit -m "Update documentation"
           git push origin master
 
       - name: Create release
