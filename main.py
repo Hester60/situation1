@@ -1,3 +1,7 @@
+""""
+Main file
+"""
+
 from types import MappingProxyType
 from operations import addition, subtraction, division, multiplication
 
