@@ -21,4 +21,4 @@ jobs:
         with:
           python-version: ${{matrix.python-version}}
       - run: python -c "import sys; print(sys.version)"
-      - run: python tests.py
+      - run: python tests/tests.py

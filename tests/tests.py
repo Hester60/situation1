@@ -1,5 +1,5 @@
 import unittest
-from operations import addition, subtraction, multiplication, division, square, root, factorial
+from src.operations import addition, subtraction, multiplication, division, square, root, factorial
 
 class TestAddition(unittest.TestCase):
     def test_addition_integers(self):
