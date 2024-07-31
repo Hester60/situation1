@@ -1,5 +1,10 @@
 import unittest
-from src.operations import addition, subtraction, multiplication, division, square, root, factorial
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
+from operations import addition, subtraction, multiplication, division, square, root, factorial
 
 class TestAddition(unittest.TestCase):
     def test_addition_integers(self):
