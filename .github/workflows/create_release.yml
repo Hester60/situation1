@@ -45,8 +45,7 @@ jobs:
       - name: Generate Documentation
         run: |
           mkdir -p documentation
-          python -m pydoc -w src/main src/operations
-          mv *.html documentation/   
+          . doc_to_markdown.sh
 
       - name: Add documentation and commit
         run: |
