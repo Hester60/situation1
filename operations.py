@@ -1,3 +1,5 @@
+import math
+
 def addition(x, y):
     """
     Add two numbers.
@@ -55,3 +57,39 @@ def division(x, y):
         return x / y
     else:
         return "Error: Division by zero"
+
+def square(x):
+    """
+    Square a number.
+
+    Args:
+        x (int): The number.
+
+    Returns: int: The square of x.
+    """
+    return x * x
+
+def root(x):
+    """
+    Root of a number.
+
+    Args:
+        x (int): The number.
+
+    Returns: int: The root of x.
+    """
+    return math.sqrt(x)
+
+def factorial(x):
+    """
+    Factorial of a number.
+
+    Args:
+        x (int): The number.
+
+    Returns: int: The factorial of x.
+    """
+    if x == 0 or x == 1:
+        return 1
+    else:
+        return x * factorial(x - 1)

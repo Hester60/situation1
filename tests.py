@@ -1,5 +1,5 @@
 import unittest
-from operations import addition, subtraction, multiplication, division
+from operations import addition, subtraction, multiplication, division, square, root, factorial
 
 class TestAddition(unittest.TestCase):
     def test_addition_integers(self):
@@ -67,6 +67,26 @@ class TestDivision(unittest.TestCase):
         self.assertEqual(division(-5, 0), "Error: Division by zero")
         self.assertEqual(division(0, 0), "Error: Division by zero")
 
+
+class TestSup(unittest.TestCase):
+
+    def test_square(self):
+        self.assertEqual(square(2), 4)
+        self.assertEqual(square(-3), 9)
+        self.assertEqual(square(0), 0)
+        self.assertEqual(square(10), 100)
+
+    def test_root(self):
+        self.assertEqual(root(4), 2)
+        self.assertEqual(root(9), 3)
+        self.assertAlmostEqual(root(2), 1.4142135623730951)
+        self.assertEqual(root(0), 0)
+
+    def test_factorial(self):
+        self.assertEqual(factorial(0), 1)
+        self.assertEqual(factorial(1), 1)
+        self.assertEqual(factorial(5), 120)
+        self.assertEqual(factorial(7), 5040)
 
 if __name__ == '__main__':
     unittest.main()
